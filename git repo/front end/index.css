@@ -1,0 +1,186 @@
+/* --- VARIABLES --- */
+:root {
+  --bg-color: #f0f0f0;
+  --box-bg: #ffffff;
+  --border-color: #000000;
+  --primary-accent: #8B5CF6; /* Violet */
+  --secondary-accent: #FFD028; /* Yellow for received */
+  --system-gray: #e5e5e5;
+  --border-width: 3px;
+  --shadow-hard: 5px 5px 0px #000000;
+}
+
+/* --- GENERAL RESET --- */
+body {
+  font-family: 'Courier New', Courier, monospace; /* Monospace fits the box theme well */
+  background-color: var(--bg-color);
+  /* Aesthetic Dot Grid Background */
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* --- MAIN CONTAINER --- */
+.chat-container {
+  width: 400px;
+  max-width: 90%;
+  background: var(--box-bg);
+  /* The "Box" look: thick border + hard shadow */
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-hard);
+  border-radius: 0px; /* Sharp corners are key for box design */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- HEADER --- */
+.chat-header {
+  background: var(--box-bg);
+  color: var(--border-color);
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-bottom: var(--border-width) solid var(--border-color);
+  letter-spacing: 1px;
+}
+
+.chat-header.joined {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- MESSAGE AREA --- */
+.message-list {
+  display: flex;
+  flex: auto;
+  overflow: auto;
+  position: relative;
+  flex-direction: column-reverse; /* Keeps new messages at bottom */
+  height: 400px;
+  background-color: #9eddff;
+  padding: 15px;
+  gap: 15px; /* Adds space between messages */
+}
+
+/* Custom Scrollbar */
+.message-list::-webkit-scrollbar {
+    width: 10px;
+    border-left: 2px solid black;
+}
+.message-list::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+/* --- INDIVIDUAL MESSAGES --- */
+.message {
+  background: var(--secondary-accent); /* Yellow for others */
+  color: black;
+  margin-bottom: 0; /* Handled by gap in message-list */
+  padding: 10px 15px;
+  border: 2px solid black;
+  box-shadow: 3px 3px 0px black;
+  border-radius: 0px;
+  font-weight: bold;
+  font-size: 14px;
+  width: fit-content;
+  max-width: 80%;
+}
+
+/* System Message (e.g. "User joined") */
+.message.system {
+  align-self: center;
+  background: var(--system-gray);
+  border: 2px dashed black; /* Dashed border for system info */
+  box-shadow: none;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* My Message (Sent) */
+.message.me {
+  background: var(--primary-accent); /* Violet for me */
+  color: white;
+  align-self: flex-end;
+  box-shadow: -3px 3px 0px black; /* Shadow flips direction */
+}
+
+/* --- USER LIST --- */
+.users {
+  background: var(--box-bg);
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: var(--border-width) solid var(--border-color);
+  text-transform: uppercase;
+}
+
+/* --- INPUT AREA --- */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background: var(--box-bg);
+  border-top: var(--border-width) solid var(--border-color);
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid black;
+  border-radius: 0;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.1s;
+}
+
+input:focus {
+  background-color: #fdf2f8;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+button {
+  padding: 10px 20px;
+  margin-left: 0; /* Reset margin */
+  background: black;
+  color: white;
+  border: 2px solid black;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+  transition: all 0.1s;
+}
+
+.chat-input button {
+  background: var(--primary-accent); /* Match "Me" color */
+  color: white;
+}
+
+.chat-input button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px black; /* Button "press" effect */
+}
+
+/* Specific styling for the login username input if needed */
+.username-input {
+  border: none;
+  padding: 0;
+  background: transparent;
+}

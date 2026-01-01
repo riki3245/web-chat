@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT RV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="container" id="loginScreen">
+        <div class="box-card login-card">
+            <div class="card-header">
+                <h3>// LOGIN</h3>
+            </div>
+            <div class="card-body">
+                <p>Enter your ID to access the terminal.</p>
+                <div class="input-group">
+                    <label>USERNAME</label>
+                    <input type="text" id="usernameInput" placeholder="ex: Ricky" autocomplete="off">
+                </div>
+                <button id="joinBtn" class="retro-btn">ENTER_CHAT</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="chatScreen">
+        <div class="box-card chat-interface">
+            
+            <div class="chat-header">
+                <div class="user-profile">
+                    <div class="avatar-box"></div>
+                    <div class="user-text">
+                        <h4 id="displayName">USER</h4>
+                        <span class="status-indicator"></span>
+                    </div>
+                </div>
+                <button class="icon-btn" onclick="location.reload()">X</button>
+            </div>
+
+            <div class="chat-area" id="messageContainer">
+                <div class="message-wrapper received">
+                    <div class="msg-box">
+                        <p>System initialized.</p>
+                    </div>
+                    <span class="time">09:41</span>
+                </div>
+                
+                <div class="message-wrapper sent">
+                    <div class="msg-box">
+                        <p>The box design is active.</p>
+                    </div>
+                    <span class="time">09:42</span>
+                </div>
+            </div>
+
+            <div class="chat-footer">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button id="sendBtn" class="retro-btn">SEND</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
